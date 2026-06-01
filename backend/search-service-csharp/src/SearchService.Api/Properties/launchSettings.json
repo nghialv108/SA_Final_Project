@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "SearchService.Api": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:3004",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

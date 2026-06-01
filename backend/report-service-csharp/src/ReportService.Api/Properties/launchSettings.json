@@ -1,0 +1,11 @@
+﻿{
+  "profiles": {
+    "ReportService.Api": {
+      "commandName": "Project",
+      "applicationUrl": "http://localhost:3005",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
