@@ -1,0 +1,13 @@
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\bin\Debug\net10.0\IamService.Domain.deps.json
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\bin\Debug\net10.0\IamService.Domain.dll
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\bin\Debug\net10.0\IamService.Domain.pdb
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\IamService.Domain.csproj.AssemblyReference.cache
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\IamService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\IamService.Domain.AssemblyInfoInputs.cache
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\IamService.Domain.AssemblyInfo.cs
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\IamService.Domain.csproj.CoreCompileInputs.cache
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\IamService.Domain.sourcelink.json
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\IamService.Domain.dll
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\refint\IamService.Domain.dll
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\IamService.Domain.pdb
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Domain\obj\Debug\net10.0\ref\IamService.Domain.dll

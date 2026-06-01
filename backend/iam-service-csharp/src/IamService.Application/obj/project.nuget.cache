@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "i7N6xkwGjuY=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\NGHIA\\Desktop\\BaiTap\\2533\\Software Achirtechture\\Project\\backend\\iam-service-csharp\\src\\IamService.Application\\IamService.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\NGHIA\\AppData\\Local\\Temp\\cursor-sandbox-cache\\946df1925bf5c5b2d2c5cd25c7aa5f10\\nuget\\fluentvalidation\\12.1.1\\fluentvalidation.12.1.1.nupkg.sha512",
+    "C:\\Users\\NGHIA\\AppData\\Local\\Temp\\cursor-sandbox-cache\\946df1925bf5c5b2d2c5cd25c7aa5f10\\nuget\\microsoft.extensions.configuration.abstractions\\10.0.8\\microsoft.extensions.configuration.abstractions.10.0.8.nupkg.sha512",
+    "C:\\Users\\NGHIA\\AppData\\Local\\Temp\\cursor-sandbox-cache\\946df1925bf5c5b2d2c5cd25c7aa5f10\\nuget\\microsoft.extensions.primitives\\10.0.8\\microsoft.extensions.primitives.10.0.8.nupkg.sha512",
+    "C:\\Users\\NGHIA\\AppData\\Local\\Temp\\cursor-sandbox-cache\\946df1925bf5c5b2d2c5cd25c7aa5f10\\nuget\\mongodb.bson\\3.9.0\\mongodb.bson.3.9.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,16 @@
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\IamService.Application.csproj.AssemblyReference.cache
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\IamService.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\IamService.Application.AssemblyInfoInputs.cache
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\IamService.Application.AssemblyInfo.cs
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\IamService.Application.csproj.CoreCompileInputs.cache
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\IamService.Application.sourcelink.json
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\bin\Debug\net10.0\IamService.Application.deps.json
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\bin\Debug\net10.0\IamService.Application.dll
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\bin\Debug\net10.0\IamService.Application.pdb
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\bin\Debug\net10.0\IamService.Domain.dll
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\bin\Debug\net10.0\IamService.Domain.pdb
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\IamServi.D0ADC6D8.Up2Date
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\IamService.Application.dll
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\refint\IamService.Application.dll
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\IamService.Application.pdb
+C:\Users\NGHIA\Desktop\BaiTap\2533\Software Achirtechture\Project\backend\iam-service-csharp\src\IamService.Application\obj\Debug\net10.0\ref\IamService.Application.dll
