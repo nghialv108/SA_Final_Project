@@ -1,0 +1,49 @@
+# dependencies
+node_modules/
+
+# build
+dist/
+build/
+coverage/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# cache
+.cache/
+.eslintcache
+.prettiercache
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# uploads/temp
+uploads/
+tmp/
+
+# framework build outputs
+.next/
+.nuxt/
+out/
+
+# deployment local configs
+.terraform/
+.serverless/
+.aws-sam/
+
+# docker override files (optional)
+docker-compose.override.yml

@@ -1,0 +1,182 @@
+# TaskFlow — run entire stack: docker compose up --build
+# App UI: http://localhost:8080
+
+name: taskflow
+
+services:
+  mongodb:
+    image: mongo:7
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  iam-service:
+    build:
+      context: ./backend/iam-service-csharp
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      MONGO_URI: mongodb://mongodb:27017/iam_service
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      INTERNAL_SECRET: ${INTERNAL_SECRET}
+      CLIENT_URL: http://localhost:8080
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3001/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  core-service:
+    build:
+      context: ./backend/core-service
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3002
+      MONGO_URI: mongodb://mongodb:27017/core_service
+      INTERNAL_SECRET: ${INTERNAL_SECRET}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3002/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 25s
+
+  bff-service:
+    build:
+      context: ./backend/bff-service
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3003
+      INTERNAL_SECRET: ${INTERNAL_SECRET}
+      IAM_SERVICE_URL: http://iam-service:3001
+      CORE_SERVICE_URL: http://core-service:3002
+    depends_on:
+      iam-service:
+        condition: service_healthy
+      core-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3003/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 25s
+
+  search-service:
+    build:
+      context: ./backend/search-service-csharp
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      CORE_MONGO_URI: mongodb://mongodb:27017/core_service
+      INTERNAL_SECRET: ${INTERNAL_SECRET}
+    depends_on:
+      mongodb:
+        condition: service_healthy
+      core-service:
+        condition: service_started
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3004/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  report-service:
+    build:
+      context: ./backend/report-service-csharp
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      CORE_SERVICE_URL: http://core-service:3002
+      INTERNAL_SECRET: ${INTERNAL_SECRET}
+    depends_on:
+      core-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3005/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  api-gateway:
+    build:
+      context: ./backend/api-gateway
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      JWT_SECRET: ${JWT_SECRET}
+      INTERNAL_SECRET: ${INTERNAL_SECRET}
+      IAM_SERVICE_URL: http://iam-service:3001
+      CORE_SERVICE_URL: http://core-service:3002
+      BFF_SERVICE_URL: http://bff-service:3003
+      SEARCH_SERVICE_URL: http://search-service:3004
+      REPORT_SERVICE_URL: http://report-service:3005
+      REDIS_URL: redis://redis:6379
+      CORS_ORIGINS: http://localhost:8080,http://localhost:5173,http://127.0.0.1:8080
+    depends_on:
+      redis:
+        condition: service_healthy
+      iam-service:
+        condition: service_healthy
+      core-service:
+        condition: service_healthy
+      bff-service:
+        condition: service_healthy
+      search-service:
+        condition: service_healthy
+      report-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000/health || exit 1"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+  web:
+    build:
+      context: ./frontend/web-client
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    depends_on:
+      api-gateway:
+        condition: service_healthy
+
+volumes:
+  mongo_data:
