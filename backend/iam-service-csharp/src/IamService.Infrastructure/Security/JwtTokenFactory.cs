@@ -15,12 +15,11 @@ public sealed class JwtTokenFactory : ITokenFactory
     public JwtTokenFactory(JwtSettingsProvider settings) => _settings = settings;
 
     public string CreateAccessToken(User user) =>
-        Sign(new Dictionary<string, string>
-        {
-            ["userId"] = user.Id,
-            ["email"] = user.Email,
-        }, _settings.Secret, _settings.ExpiresIn);
-
+            Sign(new Dictionary<string, string>
+            {
+                ["userId"] = user.Id,
+                ["email"] = user.Email,
+            }, _settings.Secret, _settings.ExpiresIn);
     public string CreateRefreshToken(string userId) =>
         Sign(new Dictionary<string, string> { ["userId"] = userId },
             _settings.RefreshSecret, _settings.RefreshExpiresIn);

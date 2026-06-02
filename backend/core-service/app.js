@@ -48,7 +48,13 @@ const createApp = () => {
   );
   // ── Trust Gate ─────────────────────────────────────────────────────────────
   // Mọi request vào /core/** đều phải có x-user-id từ gateway
-  app.use('/core', trustedSource);
+  app.use('/', (req, res, next) => {
+    console.log('Header:', JSON.stringify(req.headers));
+    next();
+  });
+
+
+  app.use('/', trustedSource);
 
   // ── Module Routes — prefix /core/{module} ──────────────────────────────────
   //

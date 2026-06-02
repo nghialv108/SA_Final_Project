@@ -185,7 +185,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\NGHIA\\AppData\\Local\\Temp\\cursor-sandbox-cache\\946df1925bf5c5b2d2c5cd25c7aa5f10\\nuget": {},
+    "C:\\Users\\NGHIA\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -194,7 +194,7 @@
       "projectUniqueName": "C:\\Users\\NGHIA\\Desktop\\BaiTap\\2533\\Software Achirtechture\\Project\\backend\\iam-service-csharp\\src\\IamService.Application\\IamService.Application.csproj",
       "projectName": "IamService.Application",
       "projectPath": "C:\\Users\\NGHIA\\Desktop\\BaiTap\\2533\\Software Achirtechture\\Project\\backend\\iam-service-csharp\\src\\IamService.Application\\IamService.Application.csproj",
-      "packagesPath": "C:\\Users\\NGHIA\\AppData\\Local\\Temp\\cursor-sandbox-cache\\946df1925bf5c5b2d2c5cd25c7aa5f10\\nuget",
+      "packagesPath": "C:\\Users\\NGHIA\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\NGHIA\\Desktop\\BaiTap\\2533\\Software Achirtechture\\Project\\backend\\iam-service-csharp\\src\\IamService.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [

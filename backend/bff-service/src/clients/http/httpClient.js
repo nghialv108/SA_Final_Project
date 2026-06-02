@@ -1,4 +1,4 @@
-const env    = require('../../shared/config/environment');
+const env = require('../../shared/config/environment');
 const logger = require('../../shared/utils/logger');
 const { ServiceUnavailableError, ServiceResponseError } = require('../../errors');
 
@@ -22,9 +22,10 @@ const buildHeaders = (user = null, extra = {}) => {
   };
 
   if (user) {
-    headers['x-user-id']      = String(user.userId);
-    headers['x-user-role']    = String(user.role || '');
+    headers['x-user-id'] = String(user.userId);
+    headers['x-user-role'] = String(user.role || '');
     headers['x-workspace-id'] = String(user.workspaceId || '');
+    headers['x-internal-secret'] = env.INTERNAL_SECRET; // Dùng để downstream verify request từ bff, tránh bị gọi thẳng
   }
 
   return headers;
@@ -43,7 +44,7 @@ const request = async (baseUrl, path, options = {}, timeoutMs = env.HTTP_TIMEOUT
   const url = `${baseUrl}${path}`;
 
   const controller = new AbortController();
-  const timer      = setTimeout(() => controller.abort(), timeoutMs);
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
 
   if (env.NODE_ENV === 'development') {
     logger.info(`[httpClient] ${method} ${url}`);
@@ -53,8 +54,8 @@ const request = async (baseUrl, path, options = {}, timeoutMs = env.HTTP_TIMEOUT
     const res = await fetch(url, {
       method,
       headers: buildHeaders(user, extraHeaders),
-      body:    body ? JSON.stringify(body) : undefined,
-      signal:  controller.signal,
+      body: body ? JSON.stringify(body) : undefined,
+      signal: controller.signal,
     });
 
     clearTimeout(timer);
@@ -86,10 +87,10 @@ const request = async (baseUrl, path, options = {}, timeoutMs = env.HTTP_TIMEOUT
 };
 
 // ── Convenience methods ───────────────────────────────────────────────────────
-const get  = (baseUrl, path, user, headers)       => request(baseUrl, path, { method: 'GET',    user, headers });
-const post = (baseUrl, path, body, user, headers)  => request(baseUrl, path, { method: 'POST',   body, user, headers });
-const put  = (baseUrl, path, body, user, headers)  => request(baseUrl, path, { method: 'PUT',    body, user, headers });
-const patch= (baseUrl, path, body, user, headers)  => request(baseUrl, path, { method: 'PATCH',  body, user, headers });
-const del  = (baseUrl, path, user, headers)        => request(baseUrl, path, { method: 'DELETE', user, headers });
+const get = (baseUrl, path, user, headers) => request(baseUrl, path, { method: 'GET', user, headers });
+const post = (baseUrl, path, body, user, headers) => request(baseUrl, path, { method: 'POST', body, user, headers });
+const put = (baseUrl, path, body, user, headers) => request(baseUrl, path, { method: 'PUT', body, user, headers });
+const patch = (baseUrl, path, body, user, headers) => request(baseUrl, path, { method: 'PATCH', body, user, headers });
+const del = (baseUrl, path, user, headers) => request(baseUrl, path, { method: 'DELETE', user, headers });
 
 module.exports = { request, get, post, put, patch, del };

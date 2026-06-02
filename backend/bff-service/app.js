@@ -1,17 +1,17 @@
-const express       = require('express');
-const cors          = require('cors');
-const helmet        = require('helmet');
-const morgan        = require('morgan');
-const env           = require('./src/shared/config/environment');
-const gatewayAuth   = require('./src/shared/middlewares/gatewayAuth.middleware');
-const deviceInfo    = require('./src/shared/middlewares/deviceInfo.middleware');
-const errorHandler  = require('./src/shared/middlewares/errorHandler');
+const express = require('express');
+const cors = require('cors');
+const helmet = require('helmet');
+const morgan = require('morgan');
+const env = require('./src/shared/config/environment');
+const gatewayAuth = require('./src/shared/middlewares/gatewayAuth.middleware');
+const deviceInfo = require('./src/shared/middlewares/deviceInfo.middleware');
+const errorHandler = require('./src/shared/middlewares/errorHandler');
 
 // ── Module routers (mỗi file là aggregator + transformer + routes gộp lại) ───
-const dashboardRoutes    = require('./src/modules/dashboard/dashboard.aggregator');
-const projectRoutes      = require('./src/modules/project/project.aggregator');
-const taskRoutes         = require('./src/modules/task/task.aggregator');
-const userRoutes         = require('./src/modules/user/user.aggregator');
+const dashboardRoutes = require('./src/modules/dashboard/dashboard.aggregator');
+const projectRoutes = require('./src/modules/project/project.aggregator');
+const taskRoutes = require('./src/modules/task/task.aggregator');
+const userRoutes = require('./src/modules/user/user.aggregator');
 const notificationRoutes = require('./src/modules/notification/notification.aggregator');
 
 const app = express();
@@ -32,7 +32,9 @@ app.get('/health', (_, res) =>
 // Áp dụng toàn bộ /bff/** :
 //   1. gatewayAuth  → verify x-internal-secret, extract req.user từ headers
 //   2. deviceInfo   → extract req.device từ headers (platform, appVersion)
-app.use('/bff', gatewayAuth, deviceInfo);
+
+app.use('/', gatewayAuth, deviceInfo);
+
 
 // ── BFF Routes ────────────────────────────────────────────────────────────────
 //
@@ -52,11 +54,11 @@ app.use('/bff', gatewayAuth, deviceInfo);
 //  PATCH /bff/notifications/:id/read    ← mark read
 //  PATCH /bff/notifications/read-all    ← mark all read
 
-app.use('/bff/dashboard',      dashboardRoutes);
-app.use('/bff/projects',       projectRoutes);
-app.use('/bff/tasks',          taskRoutes);
-app.use('/bff/users',          userRoutes);
-app.use('/bff/notifications',  notificationRoutes);
+app.use('/bff/dashboard', dashboardRoutes);
+app.use('/bff/projects', projectRoutes);
+app.use('/bff/tasks', taskRoutes);
+app.use('/bff/users', userRoutes);
+app.use('/bff/notifications', notificationRoutes);
 
 // ── 404 ───────────────────────────────────────────────────────────────────────
 app.use((req, res) =>

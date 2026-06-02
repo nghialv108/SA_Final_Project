@@ -17,11 +17,9 @@ const AppError = require('../utils/AppError');
 const gatewayAuth = (req, res, next) => {
   // ── 1. Verify internal secret ───────────────────────────────────────────────
   const incomingSecret = req.headers['x-internal-secret'];
-
   if (!incomingSecret || incomingSecret !== env.INTERNAL_SECRET) {
     return next(new AppError('Forbidden: Invalid internal secret', 403));
   }
-
   // ── 2. Extract user context từ header do gateway inject ────────────────────
   const userId = req.headers['x-user-id'];
 

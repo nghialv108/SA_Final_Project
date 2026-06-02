@@ -17,15 +17,15 @@ app.use(morgan(env.NODE_ENV === 'production' ? 'combined' : 'dev'));
 // app.use(express.json());
 
 // CORS: whitelist với callback — tường minh, dễ debug (từ V2)
-const allowedOrigins = env.CORS_ORIGINS;
-app.use(cors({
-  origin: (origin, cb) => {
-    if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-    cb(new Error('Not allowed by CORS'));
-  },
-  credentials: true,
-}));
-
+// const allowedOrigins = env.CORS_ORIGINS;
+// app.use(cors({
+//   origin: (origin, cb) => {
+//     if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
+//     cb(new Error('Not allowed by CORS'));
+//   },
+//   credentials: true,
+// }));
+app.use(cors()); // CORS: allow all (từ V1)
 // ─── Global Rate Limit — trước auth để bảo vệ sớm nhất (từ V2) ───────────────
 app.use(globalLimiter);
 

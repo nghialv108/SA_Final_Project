@@ -57,8 +57,7 @@ public sealed class AuthFacade : IAuthFacade
     }
 
     public Task<AuthResultDto> LoginAsync(LoginDto dto, CancellationToken ct = default) =>
-        _loginHandler.HandleAsync(new LoginCommand(dto), ct);
-
+     _loginHandler.HandleAsync(new LoginCommand(dto), ct);
     public async Task<TokenPairDto> RefreshAsync(string refreshToken, CancellationToken ct = default)
     {
         var userId = _tokens.TryValidateRefreshToken(refreshToken)
@@ -142,7 +141,6 @@ public sealed class LoginCommandHandler : ICommandHandler<LoginCommand, AuthResu
             throw new DomainException("Invalid email or password", 401);
 
         AccountStateFactory.FromUser(user).EnsureCanLogin(user);
-
         var pair = await new TokenPairBuilder(_tokens, _users, _hasher).ForUser(user).BuildAndPersistAsync(ct);
         var clean = await _users.FindByIdAsync(user.Id, ct) ?? user;
         return new AuthResultDto(clean.ToDto(), pair.AccessToken, pair.RefreshToken);

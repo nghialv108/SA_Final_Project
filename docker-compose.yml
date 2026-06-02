@@ -10,7 +10,7 @@ services:
     volumes:
       - mongo_data:/data/db
     healthcheck:
-      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      test: [ "CMD", "mongosh", "--eval", "db.adminCommand('ping')" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -20,7 +20,7 @@ services:
     image: redis:7-alpine
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: [ "CMD", "redis-cli", "ping" ]
       interval: 10s
       timeout: 3s
       retries: 5
@@ -41,7 +41,7 @@ services:
       mongodb:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3001/health || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:3001/health || exit 1" ]
       interval: 15s
       timeout: 5s
       retries: 5
@@ -61,7 +61,7 @@ services:
       mongodb:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3002/health || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:3002/health || exit 1" ]
       interval: 15s
       timeout: 5s
       retries: 5
@@ -84,7 +84,7 @@ services:
       core-service:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3003/health || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:3003/health || exit 1" ]
       interval: 15s
       timeout: 5s
       retries: 5
@@ -105,7 +105,7 @@ services:
       core-service:
         condition: service_started
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3004/health || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:3004/health || exit 1" ]
       interval: 15s
       timeout: 5s
       retries: 5
@@ -124,7 +124,7 @@ services:
       core-service:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3005/health || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:3005/health || exit 1" ]
       interval: 15s
       timeout: 5s
       retries: 5
@@ -134,6 +134,8 @@ services:
     build:
       context: ./backend/api-gateway
       dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
     restart: unless-stopped
     environment:
       NODE_ENV: production
@@ -161,7 +163,7 @@ services:
       report-service:
         condition: service_healthy
     healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3000/health || exit 1"]
+      test: [ "CMD-SHELL", "curl -f http://localhost:3000/health || exit 1" ]
       interval: 15s
       timeout: 5s
       retries: 5

@@ -45,5 +45,9 @@ out/
 .serverless/
 .aws-sam/
 
+#bin.obj
+.bin
+.obj
+
 # docker override files (optional)
 docker-compose.override.yml

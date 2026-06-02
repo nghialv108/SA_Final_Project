@@ -14,7 +14,11 @@ const env = require('../config/environment');
  */
 const trustedSource = (req, res, next) => {
   const incomingSecret = req.headers['x-internal-secret'];
-
+  console.log('incomingSecret:', JSON.stringify(incomingSecret));
+  console.log('env.INTERNAL_SECRET:', JSON.stringify(env.INTERNAL_SECRET));
+  console.log('equal:', incomingSecret === env.INTERNAL_SECRET);
+  console.log('type incoming:', typeof incomingSecret);
+  console.log('type env:', typeof env.INTERNAL_SECRET);
   if (!incomingSecret || incomingSecret !== env.INTERNAL_SECRET) {
     return next(new AppError('Forbidden: Invalid internal secret', 403));
   }

@@ -28,20 +28,17 @@ public sealed class TokenPairBuilder
     public async Task<TokenPair> BuildAndPersistAsync(CancellationToken ct = default)
     {
         if (_user is null) throw new InvalidOperationException("User is required");
-
         var pair = new TokenPair
         {
             AccessToken = _tokenFactory.CreateAccessToken(_user),
             RefreshToken = _tokenFactory.CreateRefreshToken(_user.Id),
         };
-
         var hash = _hasher.Hash(pair.RefreshToken);
         await _users.UpdateAsync(_user.Id, u =>
         {
             u.RefreshTokenHash = hash;
             u.LastLoginAt = DateTime.UtcNow;
         }, ct);
-
         return pair;
     }
 }
